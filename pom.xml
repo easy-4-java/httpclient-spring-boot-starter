@@ -487,6 +487,7 @@
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
+            <version>4.5.14</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
@@ -535,6 +536,7 @@
 		<dependency>
 		    <groupId>io.dropwizard.metrics</groupId>
 		    <artifactId>metrics-core</artifactId>
+            <version>4.2.30</version>
 		</dependency>
 		<dependency>
 		    <groupId>io.dropwizard.metrics</groupId>
