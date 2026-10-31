@@ -433,7 +433,7 @@
     <dependencyManagement>
 
         <dependencies>
-            <!-- https://mvnrepository.com/artifact/org.apache.commons/not-yet-commons-ssl -->
+            <!-- https://central.sonatype.com/artifact/ca.juliusdavies/not-yet-commons-ssl -->
             <!-- 
                 Not-Yet-Commons-SSL是Apache许可证下的一款Java类库，它提供易于使用的API，并支持各种各样的证书格式和配置选项，来达到简化SSL的使用的目的。
                 尤其是，它允许在单个JVM中使用多个证书，优雅地处理自签名证书，以及支持所有标准的证书格式，从而解决了一些长期以来一直存在的Java内建的SSL支持问题。
@@ -441,7 +441,7 @@
              -->
             <!-- For Not-Yet-Commons Ssl -->
             <dependency>
-                <groupId>org.apache.commons</groupId>
+                <groupId>ca.juliusdavies</groupId>
                 <artifactId>not-yet-commons-ssl</artifactId>
                 <version>${commons-not-yet-ssl.version}</version>
             </dependency>
@@ -485,6 +485,13 @@
     </dependencyManagement>
     
     <dependencies>
+
+        <!-- Companion source: easy-4-java/httpclient-extension, main -->
+        <dependency>
+            <groupId>io.github.easy4j</groupId>
+            <artifactId>httpclient-extension</artifactId>
+            <version>2.0.x.20260630-SNAPSHOT</version>
+        </dependency>
 
         <!-- Java Servlet API -->
         <!-- For Servlet Api -->
@@ -574,7 +581,7 @@
         </dependency>
         <!-- For Not-Yet-Commons Ssl -->
         <dependency>
-            <groupId>org.apache.commons</groupId>
+            <groupId>ca.juliusdavies</groupId>
             <artifactId>not-yet-commons-ssl</artifactId>
         </dependency>
         <!-- For Commons Lang3 -->
