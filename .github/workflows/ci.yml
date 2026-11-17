@@ -14,9 +14,9 @@ name: CI
 
 on:
   push:
-    branches: [2.3.x, 2.7.x, 3.0.x, 3.1.x, 3.2.x, 3.3.x, 3.4.x, 3.5.x, 4.0.x, 4.1.x, master, main]
+    branches: ["feature/**", "test/**", 2.3.x, 2.7.x, 3.0.x, 3.1.x, 3.2.x, 3.3.x, 3.4.x, 3.5.x, 4.0.x, 4.1.x, master, main]
   pull_request:
-    branches: [2.3.x, 2.7.x, 3.0.x, 3.1.x, 3.2.x, 3.3.x, 3.4.x, 3.5.x, 4.0.x, 4.1.x, master, main]
+    branches: ["test/**", 2.3.x, 2.7.x, 3.0.x, 3.1.x, 3.2.x, 3.3.x, 3.4.x, 3.5.x, 4.0.x, 4.1.x, master, main]
   workflow_dispatch:
 
 permissions:
@@ -41,6 +41,19 @@ jobs:
           distribution: temurin
           java-version: ${{ matrix.java }}
           cache: maven
+
+      - name: Configure Easy4J Maven repositories
+        env:
+          MAVEN_SETTINGS_XML: ${{ secrets.MAVEN_SETTINGS_XML }}
+        shell: bash
+        run: |
+          if [[ -z "$MAVEN_SETTINGS_XML" ]]; then
+            echo "MAVEN_SETTINGS_XML is required to resolve Easy4J snapshots." >&2
+            exit 1
+          fi
+          install -d -m 700 "$HOME/.m2"
+          umask 077
+          printf '%s' "$MAVEN_SETTINGS_XML" > "$HOME/.m2/settings.xml"
 
       - name: Build and verify
         run: mvn -B --no-transfer-progress clean verify

@@ -61,7 +61,6 @@ import org.apache.http.spring.boot.client.TargetAuthStrategy;
 import org.apache.http.spring.boot.client.handler.HttpRequestExceptionRetryHandler;
 import org.apache.http.spring.boot.client.interceptor.HttpRequestGzipInterceptor;
 import org.apache.http.spring.boot.client.interceptor.HttpRequestHeaderInterceptor;
-import org.apache.http.spring.boot.client.interceptor.HttpRequestHeaderProperties;
 import org.apache.http.spring.boot.client.interceptor.HttpRequestSummaryInterceptor;
 import org.apache.http.spring.boot.client.interceptor.HttpResponseGzipInterceptor;
 import org.apache.http.spring.boot.client.utils.HttpMessageFactoryUtils;
@@ -77,7 +76,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ConditionalOnClass({ CloseableHttpClient.class, HttpClientConnectionManager.class })
-@EnableConfigurationProperties(value = {HttpClientProperties.class, HttpClientSocketProperties.class})
+@EnableConfigurationProperties(value = {HttpClientProperties.class, HttpClientSocketProperties.class,
+		HttpClientConnectionProperties.class, HttpClientRequestProperties.class, HttpClientManagerProperties.class})
 public class HttpClientDependsOnAutoConfiguration {
 	
 	@Bean
@@ -294,8 +294,8 @@ public class HttpClientDependsOnAutoConfiguration {
 	}
 
 	@Bean
-	public HttpRequestInterceptor headerInterceptor(HttpRequestHeaderProperties headerProperties) {
-		return new HttpRequestHeaderInterceptor(headerProperties);
+	public HttpRequestInterceptor headerInterceptor(HttpClientProperties properties) {
+		return new HttpRequestHeaderInterceptor(properties.getHeaders());
 	}
 
 	@Bean
