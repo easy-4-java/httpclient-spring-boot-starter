@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+org.apache.http.spring.boot.HttpClientDependsOnAutoConfiguration,\
+org.apache.http.spring.boot.HttpClientMetricAutoConfiguration,\
+org.apache.http.spring.boot.HttpClientBuilderAutoConfiguration
