@@ -125,7 +125,8 @@ Starter 自动装配以下 Bean：
 
 ```yaml
 httpclient:
-  enabled: true
+  headers:
+    '[X-Trace-Id]': trace-123
 ```
 
 ### 6.3 使用 Bean
@@ -151,6 +152,8 @@ private HttpClientConnectionManagerBuilder connectionManagerBuilder;
 ### 7.1 配置前缀
 
 `httpclient`
+
+`httpclient.headers` 会将配置的请求头添加到发出的请求中。
 
 ### 7.2 配置项
 

@@ -125,7 +125,8 @@ Add the dependency above to your `pom.xml`.
 
 ```yaml
 httpclient:
-  enabled: true
+  headers:
+    '[X-Trace-Id]': trace-123
 ```
 
 ### 6.3 Use the bean
@@ -151,6 +152,8 @@ private HttpClientConnectionManagerBuilder connectionManagerBuilder;
 ### 7.1 Config Prefix
 
 `httpclient`
+
+`httpclient.headers` adds the configured headers to outgoing requests.
 
 ### 7.2 Configuration Items
 
